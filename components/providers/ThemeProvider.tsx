@@ -1,35 +1,36 @@
+import { colorways } from "@/constants/colorways";
 import { vars } from "nativewind";
 import { createContext, ReactNode, useContext, useState } from "react";
 import { View } from "react-native";
 
 const colorwayThemes = {
   default: vars({
-    "--color-background": "#4c4b3b",
-    "--color-primary": "#f76506",
-    "--color-secondary": "#d6cfbe",
-    "--color-primary-foreground": "#f5f5f5",
-    "--color-secondary-foreground": "#141414",
+    "--color-background": colorways.default.background,
+    "--color-primary": colorways.default.primary,
+    "--color-secondary": colorways.default.secondary,
+    "--color-primary-foreground": colorways.default.primaryForeground,
+    "--color-secondary-foreground": colorways.default.secondaryForeground,
   }),
   chicago: vars({
-    "--color-background": "#242424",
-    "--color-primary": "#c41e3a",
-    "--color-secondary": "#f5f5f5",
-    "--color-primary-foreground": "#f5f5f5",
-    "--color-secondary-foreground": "#141414",
+    "--color-background": colorways.chicago.background,
+    "--color-primary": colorways.chicago.primary,
+    "--color-secondary": colorways.chicago.secondary,
+    "--color-primary-foreground": colorways.chicago.primaryForeground,
+    "--color-secondary-foreground": colorways.chicago.secondaryForeground,
   }),
   royal: vars({
-    "--color-background": "#242424",
-    "--color-primary": "#2256cd",
-    "--color-secondary": "#f5f5f5",
-    "--color-primary-foreground": "#f5f5f5",
-    "--color-secondary-foreground": "#141414",
+    "--color-background": colorways.royal.background,
+    "--color-primary": colorways.royal.primary,
+    "--color-secondary": colorways.royal.secondary,
+    "--color-primary-foreground": colorways.royal.primaryForeground,
+    "--color-secondary-foreground": colorways.royal.secondaryForeground,
   }),
   neon: vars({
-    "--color-background": "#89898d",
-    "--color-primary": "#ADFF1A",
-    "--color-secondary": "#141414",
-    "--color-primary-foreground": "#141414",
-    "--color-secondary-foreground": "#f5f5f5",
+    "--color-background": colorways.neon.background,
+    "--color-primary": colorways.neon.primary,
+    "--color-secondary": colorways.neon.secondary,
+    "--color-primary-foreground": colorways.neon.primaryForeground,
+    "--color-secondary-foreground": colorways.neon.secondaryForeground,
   }),
 };
 
