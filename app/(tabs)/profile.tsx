@@ -1,21 +1,24 @@
 import { useTheme } from "@/components/providers/ThemeProvider";
+import React from "react";
 import { Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function TabTwoScreen() {
+const ProfileScreen = () => {
   const { setTheme } = useTheme();
 
   return (
     <SafeAreaView className='bg-background h-screen'>
       <Text className='text-2xl text-secondary-foreground bg-secondary text-center rounded-md p-3'>
-        Explore Screen
+        Profile Screen
       </Text>
       <TouchableOpacity
-        onPress={() => setTheme("chicago")}
+        onPress={() => setTheme("neon")}
         className='bg-primary mt-3 w-32 p-5 rounded-lg flex justify-center items-center'
       >
         <Text className='text-primary-foreground'>Button</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
-}
+};
+
+export default ProfileScreen;
