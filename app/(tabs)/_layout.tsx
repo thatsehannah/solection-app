@@ -16,14 +16,14 @@ const TabIcon = ({
   theme: ThemeName;
   title: string;
 }) => (
-  <View className='flex-1 mt-3 flex flex-col items-center'>
+  <View className='flex-1 flex-col items-center'>
     <MaterialIcons
       name={name}
-      size={24}
+      size={26}
       color={focused ? colorways[theme].primary : colorways[theme].secondary}
     />
     <Text
-      className={`${focused ? `text-[${colorways[theme].primary}]` : `text-[${colorways[theme].secondary}]`} text-sm w-full text-center mt-1 font-league`}
+      className={`text-sm w-full text-center mt-1 font-league ${focused ? "text-primary" : "text-secondary"}`}
     >
       {title}
     </Text>
@@ -41,7 +41,8 @@ export default function TabLayout() {
         tabBarStyle: {
           backgroundColor: colorways[theme].background,
           position: "absolute",
-          minHeight: 50,
+          minHeight: 60,
+          paddingTop: 8,
         },
       }}
     >
