@@ -1,51 +1,91 @@
+import { ThemeName, useTheme } from "@/components/providers/ThemeProvider";
+import { colorways } from "@/constants/colorways";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Tabs } from "expo-router";
-import React from "react";
+import React, { ComponentProps } from "react";
+import { Text, View } from "react-native";
+
+const TabIcon = ({
+  name,
+  focused,
+  theme,
+  title,
+}: {
+  name: ComponentProps<typeof MaterialIcons>["name"];
+  focused: boolean;
+  theme: ThemeName;
+  title: string;
+}) => (
+  <View className='flex-1 flex-col items-center'>
+    <MaterialIcons
+      name={name}
+      size={26}
+      color={focused ? colorways[theme].primary : colorways[theme].secondary}
+    />
+    <Text
+      className={`text-sm w-full text-center mt-1 font-league ${focused ? "text-primary" : "text-secondary"}`}
+    >
+      {title}
+    </Text>
+  </View>
+);
 
 export default function TabLayout() {
+  const { theme } = useTheme();
+
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: "white",
         headerShown: false,
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          backgroundColor: colorways[theme].background,
+          position: "absolute",
+          minHeight: 60,
+          paddingTop: 8,
+        },
       }}
     >
       <Tabs.Screen
         name='index'
         options={{
           title: "Home",
-          // tabBarIcon: ({ color }) => (
-          //   <IconSymbol
-          //     size={28}
-          //     name='house.fill'
-          //     color={color}
-          //   />
-          // ),
+          tabBarIcon: ({ focused }) => (
+            <TabIcon
+              name='home'
+              focused={focused}
+              theme={theme}
+              title='Home'
+            />
+          ),
         }}
       />
       <Tabs.Screen
         name='explore'
         options={{
           title: "Explore",
-          // tabBarIcon: ({ color }) => (
-          //   <IconSymbol
-          //     size={28}
-          //     name='paperplane.fill'
-          //     color={color}
-          //   />
-          // ),
+          tabBarIcon: ({ focused }) => (
+            <TabIcon
+              name='shelves'
+              focused={focused}
+              theme={theme}
+              title='Explore'
+            />
+          ),
         }}
       />
       <Tabs.Screen
         name='profile'
         options={{
           title: "Profile",
-          // tabBarIcon: ({ color }) => (
-          //   <IconSymbol
-          //     size={28}
-          //     name='paperplane.fill'
-          //     color={color}
-          //   />
-          // ),
+          tabBarIcon: ({ focused }) => (
+            <TabIcon
+              name='person'
+              focused={focused}
+              theme={theme}
+              title='Profile'
+            />
+          ),
         }}
       />
     </Tabs>
