@@ -1,12 +1,35 @@
 import { useTheme } from "@/components/providers/ThemeProvider";
-import { Text, TouchableOpacity } from "react-native";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { useState } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
-  const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
+  const [favorite, setFavorite] = useState(false);
 
   return (
-    <SafeAreaView className='bg-background h-screen'>
+    <SafeAreaView className='bg-background h-screen px-4'>
+      <View className='flex flex-row justify-between items-center mb-3'>
+        <TouchableOpacity
+          onPress={() => setFavorite(!favorite)}
+          className='bg-primary w-28 p-5 flex justify-center items-center rounded-md'
+        >
+          <Text className='text-primary-foreground'>Favorite</Text>
+        </TouchableOpacity>
+        {favorite ? (
+          <MaterialIcons
+            name='favorite'
+            size={32}
+            color={"red"}
+          />
+        ) : (
+          <MaterialIcons
+            name='favorite-outline'
+            size={32}
+          />
+        )}
+      </View>
       <Text className='text-2xl text-secondary-foreground bg-secondary text-center rounded-md p-3 font-league'>
         Home Screen
       </Text>
